@@ -1,5 +1,6 @@
 package com.Task.CustomerFeedBackSystem.admin;
 
+import com.Task.CustomerFeedBackSystem.user.entity.Role;
 import com.Task.CustomerFeedBackSystem.user.entity.User;
 import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
@@ -20,6 +21,7 @@ public class AdminSeeder {
                     .username("Amaan")
                     .email("admin@gmail.com")
                     .password(passwordEncoder.encode("admin123"))
+                    .role(Role.ROLE_ADMIN)
                     .build();
             userRepository.save(admin);
         }

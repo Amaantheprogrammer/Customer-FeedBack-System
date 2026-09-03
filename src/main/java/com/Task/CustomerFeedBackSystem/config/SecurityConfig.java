@@ -34,14 +34,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth
                                 .requestMatchers("/auth/**").permitAll()
-                                // User access
+
                                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.PATCH, "/users/**").hasAnyRole("USER", "ADMIN")
-                                // Feedback access
+
                                 .requestMatchers(HttpMethod.GET, "/feedbacks/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/feedbacks/**").hasAnyRole("USER",    "ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/feedbacks/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.PUT, "/feedbacks/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/feedbacks/**").hasRole("ADMIN")
+
+                                .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
@@ -58,9 +60,4 @@ public class SecurityConfig {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(daoAuthenticationProvider);
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService(UserRepository userRepository) {
-//        return new CustomUserDetailsService(userRepository);
-//    }
 }
