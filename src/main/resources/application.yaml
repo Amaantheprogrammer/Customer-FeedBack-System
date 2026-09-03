@@ -3,7 +3,7 @@ spring:
     name: CustomerFeedBackSystem
 
   datasource:
-    url: jdbc:mysql://localhost:3306/customerfeedbackdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/customerfeedbackdb?createIfNotExists=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,7 +1,9 @@
 package com.Task.CustomerFeedBackSystem.config;
 
+import com.Task.CustomerFeedBackSystem.auth.custom.CustomUserDetailsService;
 import com.Task.CustomerFeedBackSystem.auth.jwt.JwtAuthFilter;
 import com.Task.CustomerFeedBackSystem.auth.jwt.JwtService;
+import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +33,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers("/auth").permitAll()
+                                .requestMatchers("/auth/**").permitAll()
                                 // User access
                                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.PATCH, "/users/**").hasAnyRole("USER", "ADMIN")
@@ -56,4 +58,9 @@ public class SecurityConfig {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(daoAuthenticationProvider);
     }
+
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepository userRepository) {
+//        return new CustomUserDetailsService(userRepository);
+//    }
 }

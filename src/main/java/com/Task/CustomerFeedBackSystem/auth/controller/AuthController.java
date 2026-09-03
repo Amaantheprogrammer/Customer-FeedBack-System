@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final AuthService authService;
 
-    @PostMapping("/create-user")
+    @PostMapping("/sign-up")
     public ResponseEntity<UserResponse> signUp(@RequestBody @Valid SignupRequest signupRequest) {
         return ResponseEntity.ok(authService.signUp(signupRequest));
     }
 
-    @PostMapping("/update-user")
+    @PostMapping("/sign-in")
     public ResponseEntity<AuthResponse> signIn(@RequestBody @Valid SigninRequest signipRequest) {
         return ResponseEntity.ok(authService.signIn(signipRequest));
     }

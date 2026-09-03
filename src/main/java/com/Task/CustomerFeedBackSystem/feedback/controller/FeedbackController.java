@@ -35,7 +35,7 @@ public class FeedbackController {
         return ResponseEntity.ok(feedbackService.getAllFeedbacksByDateDesc(pageable));
     }
 
-    @GetMapping("/date")
+    @GetMapping("/date-desc")
     public ResponseEntity<List<FeedbackResponse>> getAllFeedbacksByDate(LocalDate date) {
         return ResponseEntity.ok(feedbackService.getAllFeedbacksByDate(date));
     }

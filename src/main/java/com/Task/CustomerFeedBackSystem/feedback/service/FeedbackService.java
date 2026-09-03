@@ -40,7 +40,7 @@ public class FeedbackService {
 
     @Transactional(readOnly = true)
     public Page<FeedbackResponse> getAllFeedbacks(Pageable pageable) {
-        Page<Feedback> feedbacks = feedbackRepository.findAllFeedbacks(pageable);
+        Page<Feedback> feedbacks = feedbackRepository.findAll(pageable);
         return feedbacks.map(feedback -> modelMapper.map(feedback, FeedbackResponse.class));
     }
 

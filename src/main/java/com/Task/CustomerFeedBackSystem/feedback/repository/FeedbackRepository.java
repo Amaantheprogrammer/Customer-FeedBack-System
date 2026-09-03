@@ -11,8 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
-    Page<Feedback> findAllFeedbacks(Pageable pageable);
-
     @Query("SELECT f FROM Feedback f ORDER BY f.date DESC")
     Page<Feedback> findAllFeedbacksByDateDesc(Pageable pageable);
 

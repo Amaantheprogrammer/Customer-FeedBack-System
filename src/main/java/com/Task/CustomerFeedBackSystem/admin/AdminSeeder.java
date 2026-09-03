@@ -5,7 +5,9 @@ import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class AdminSeeder {
     private final UserRepository userRepository;
