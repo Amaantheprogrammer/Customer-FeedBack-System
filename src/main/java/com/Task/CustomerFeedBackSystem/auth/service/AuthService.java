@@ -53,7 +53,7 @@ public class AuthService {
         }
         User user = userRepository.findByUsername(signinRequest.getUsername())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + signinRequest.getUsername()));
-        String token = jwtService.generateToken(signinRequest.getUsername(), signinRequest.getPassword());
+        String token = jwtService.generateToken(signinRequest.getUsername(), user.getRole().name());
         return new AuthResponse(token);
    }
 

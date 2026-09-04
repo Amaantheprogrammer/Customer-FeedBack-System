@@ -7,6 +7,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.ott.InvalidOneTimeTokenException;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -63,7 +64,7 @@ public class JwtService {
     }
 
     private Key getSignedKey() {
-        return Keys.hmacShaKeyFor(JWT_SECRET_KEY.getBytes());
+        return Keys.hmacShaKeyFor(JWT_SECRET_KEY.getBytes(StandardCharsets.UTF_8));
     }
 }
 

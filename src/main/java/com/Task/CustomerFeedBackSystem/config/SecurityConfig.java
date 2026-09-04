@@ -38,12 +38,13 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.PATCH, "/users/**").hasAnyRole("USER", "ADMIN")
 
-                                .requestMatchers(HttpMethod.GET, "/feedbacks/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/feedbacks/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/feedbacks", "/feedbacks/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/feedbacks", "/feedbacks/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers(HttpMethod.PUT, "/feedbacks/**").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/feedbacks/**").hasRole("ADMIN")
 
-                                .anyRequest().authenticated()
+                                .anyRequest()
+                                .authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();

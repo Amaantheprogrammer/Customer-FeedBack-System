@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.*;
 import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
@@ -42,7 +43,7 @@ public class FeedbackController {
 
     @PostMapping
     public ResponseEntity<FeedbackResponse> createFeedback(@RequestBody @Valid CreateFeedbackRequest createFeedbackRequest) {
-        return ResponseEntity.ok(feedbackService.createFeedback(createFeedbackRequest));
+        return ResponseEntity.status(HttpStatus.CREATED).body(feedbackService.createFeedback(createFeedbackRequest));
     }
 
     @PutMapping("/{id}")
