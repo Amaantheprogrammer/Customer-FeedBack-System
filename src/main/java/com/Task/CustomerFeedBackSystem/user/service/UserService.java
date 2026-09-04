@@ -40,7 +40,7 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with ID " + id));
         if (!user.getUsername().equals(getCurrentUser().getUsername())) {
-            throw new AccessDeniedException("Cannot acces other user accounts");
+            throw new AccessDeniedException("Cannot access other user accounts");
         }
         if (userRequest.getUsername() != null) {
             user.setUsername(userRequest.getUsername());
@@ -57,7 +57,6 @@ public class UserService {
 
     private User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         String username = authentication.getName();
         return userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with ID " + username));

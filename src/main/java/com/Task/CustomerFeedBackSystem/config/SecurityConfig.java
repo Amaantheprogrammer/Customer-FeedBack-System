@@ -1,9 +1,7 @@
 package com.Task.CustomerFeedBackSystem.config;
 
-import com.Task.CustomerFeedBackSystem.auth.custom.CustomUserDetailsService;
 import com.Task.CustomerFeedBackSystem.auth.jwt.JwtAuthFilter;
 import com.Task.CustomerFeedBackSystem.auth.jwt.JwtService;
-import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
