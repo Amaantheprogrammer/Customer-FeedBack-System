@@ -37,7 +37,7 @@ public class FeedbackController {
     }
 
     @GetMapping("/date-desc")
-    public ResponseEntity<List<FeedbackResponse>> getAllFeedbacksByDate(LocalDate date) {
+    public ResponseEntity<List<FeedbackResponse>> getAllFeedbacksByDate(@RequestParam LocalDate date) {
         return ResponseEntity.ok(feedbackService.getAllFeedbacksByDate(date));
     }
 
@@ -47,7 +47,7 @@ public class FeedbackController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FeedbackResponse> updateFeedback(@PathVariable Long id,@RequestBody @Valid UpdateFeedbackRequest updateFeedbackRequest) {
+    public ResponseEntity<FeedbackResponse> updateFeedback(@PathVariable Long id, @RequestBody @Valid UpdateFeedbackRequest updateFeedbackRequest) {
         return ResponseEntity.ok(feedbackService.updateFeedback(id, updateFeedbackRequest));
     }
 
