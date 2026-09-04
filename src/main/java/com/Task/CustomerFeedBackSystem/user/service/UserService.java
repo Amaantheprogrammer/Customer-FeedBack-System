@@ -1,18 +1,20 @@
 package com.Task.CustomerFeedBackSystem.user.service;
 
-import com.Task.CustomerFeedBackSystem.exception.AccessDeniedException;
-import com.Task.CustomerFeedBackSystem.exception.ResourceNotFoundException;
-import com.Task.CustomerFeedBackSystem.user.dto.UserRequest;
-import com.Task.CustomerFeedBackSystem.user.dto.UserResponse;
-import com.Task.CustomerFeedBackSystem.user.entity.User;
-import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.Task.CustomerFeedBackSystem.exception.AccessDeniedException;
+import com.Task.CustomerFeedBackSystem.exception.ResourceNotFoundException;
+import com.Task.CustomerFeedBackSystem.user.dto.UserRequest;
+import com.Task.CustomerFeedBackSystem.user.dto.UserResponse;
+import com.Task.CustomerFeedBackSystem.user.entity.User;
+import com.Task.CustomerFeedBackSystem.user.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -52,7 +54,7 @@ public class UserService {
             user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         }
         User savedUser = userRepository.save(user);
-        return modelMapper.map(user, UserResponse.class);
+        return modelMapper.map(savedUser, UserResponse.class);
     }
 
     private User getCurrentUser() {
