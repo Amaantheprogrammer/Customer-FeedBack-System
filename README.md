@@ -103,7 +103,7 @@ src/main/java
 │   ├── entity
 │   ├── repository
 │   └── service
-│
+│── admin
 ├── config
 ├── exception
 └── common_dto
