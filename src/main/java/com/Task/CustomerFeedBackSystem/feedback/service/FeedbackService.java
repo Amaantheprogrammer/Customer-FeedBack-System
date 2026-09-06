@@ -51,7 +51,7 @@ public class FeedbackService {
     }
 
     @Transactional(readOnly = true)
-    public List<FeedbackResponse> getAllFeedbacksByDate(LocalDate date) {
+    public List<FeedbackResponse> getFeedbacksByDate(LocalDate date) {
         List<Feedback> feedbacks = feedbackRepository.findFeedbacksByDate(date);
         return feedbacks.stream()
                 .map(feedback -> modelMapper.map(feedback, FeedbackResponse.class))

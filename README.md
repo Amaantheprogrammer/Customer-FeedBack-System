@@ -56,7 +56,7 @@ A secure and scalable RESTful backend application built using **Spring Boot**, d
 
 ### Backend
 
-* Java 17
+* Java 
 * Spring Boot 4
 * Spring Security
 * Spring Data JPA
@@ -263,10 +263,10 @@ Supports pagination:
 GET /feedbacks?page=0&size=10
 ```
 
-#### Get Feedbacks Sorted By Date
+#### Get All Feedbacks Sorted By Date
 
 ```http
-GET /feedbacks/date
+GET /feedbacks/date-desc
 ```
 
 Role Required:
@@ -278,7 +278,7 @@ ADMIN
 #### Get Feedbacks By Specific Date
 
 ```http
-GET /feedbacks/date-desc?date=2026-09-01
+GET /feedbacks/date?date=2026-09-01
 ```
 
 Role Required:

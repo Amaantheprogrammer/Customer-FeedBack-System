@@ -31,14 +31,14 @@ public class FeedbackController {
         return ResponseEntity.ok(feedbackService.getAllFeedbacks(pageable));
     }
 
-    @GetMapping("/date")
+    @GetMapping("/date-desc")
     public ResponseEntity<Page<FeedbackResponse>> getAllFeedbacksByDateDesc(@PageableDefault(size = 10) Pageable pageable) {
         return ResponseEntity.ok(feedbackService.getAllFeedbacksByDateDesc(pageable));
     }
 
-    @GetMapping("/date-desc")
-    public ResponseEntity<List<FeedbackResponse>> getAllFeedbacksByDate(@RequestParam LocalDate date) {
-        return ResponseEntity.ok(feedbackService.getAllFeedbacksByDate(date));
+    @GetMapping("/date")
+    public ResponseEntity<List<FeedbackResponse>> getFeedbacksByDate(@RequestParam LocalDate date) {
+        return ResponseEntity.ok(feedbackService.getFeedbacksByDate(date));
     }
 
     @PostMapping

@@ -13,6 +13,7 @@ import lombok.Setter;
 public class SigninRequest {
     @NotBlank(message = "Username is a required field")
     private String username;
+
     @NotBlank(message = "Password is a required field")
     private String password;
 }
